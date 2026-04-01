@@ -28,7 +28,15 @@
       "https://*/*"
     ],
     "permissions": [
-      "tabs"
-    ]
+      "storage"
+    ],
+    "commands": {
+      "toggle-translate": {
+        "suggested_key": {
+          "default": "Alt+T"
+        },
+        "description": "Toggle hover translation ON/OFF"
+      }
+    }
   }
 }
