@@ -21,7 +21,10 @@ jobs:
       - run: yarn build
 
       - name: Write signing key
-        run: echo "${{ secrets.CRX_PRIVATE_KEY }}" > key.pem
+        run: |
+          echo "${{ secrets.CRX_PRIVATE_KEY }}" > key.pem
+          # PKCS#8 → PKCS#1 変換（crx3はPKCS#1を期待する）
+          openssl rsa -in key.pem -out key.pem -traditional 2>/dev/null || true
 
       - name: Get extension ID
         id: ext
